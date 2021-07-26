@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+           * {
+                box-sizing: border-box;
+            }
+
+            .row {
+                display: flex;
+
+            }
+
+/* Create two equal columns that sits next to each other */
+            .column {
+                flex: 50%;
+                height: 100%; /* Should be removed. Only for demonstration */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="row">
+            <div class="column" style="padding-top: 20px;" >
+        <center>
+            <h1>Enter the Database Details</h1>
+            <div class="conatiner">
+                <div class="jumbotron" style="background-color : rgb(255,255,255);">
+                    <form class="" action='table_view' method="post">
+                      {% csrf_token %}
+                      <label for="schema_name">DATABASE</label><br>
+                      <input type="text" id="db_name" name="db_name"   placeholder="Enter the database name"><br><br>
+                      <label for="schema_name">SCHEMA</label><br>
+                      <input type="text" id="schema_name" name="schema_name"   placeholder="Enter the schema name"><br><br>
+                      <label for="schema_name">TABLE</label><br>
+                      <input type="text" id="table_name" name="table_name"   placeholder="Enter the table name"><br><br>
+                      <label for="schema_name">COLUMN</label><br>
+                      <input type="text" id="column_name" name="column_name"  placeholder="Enter the column name, for all, type - 'ALL'"><br><br>    
+                      <HR>
+                        
+                      <label for="query_name">QUERY</label><br>
+                      <textarea  id="query_name" name="query_name"  placeholder="Enter the query here, you wont need to enter the above column" rows="6" columns="10"></textarea><br><br>
+                      <input type="submit" class="btn btn-primary" name="" value="check">
+                    </form>
+                </div>
+              </div>
+        </center>
+    </div>
+    <div class="column" style="background-color:#bbb;">
+                <center>
+                    {% autoescape off %} {{ context }}	{% endautoescape %}	
+                </center>
+            </div>
+        </div>
+        
+    </body>
+</html>
